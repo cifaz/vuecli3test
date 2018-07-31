@@ -1,4 +1,4 @@
-# tibi-cli 替比脚手架
+# 脚手架
 
 ## 环境配置
 ```
@@ -9,7 +9,7 @@
 .env.production     生产环境
 
 如果是本地特殊的配置或自己的配置, 请不要在这几个环境进行修改,  
-复制一个文件, 如.env.test.local 这个文件不会上传到GIT, 放心使用
+复制一个文件, 如.env.test.local 这个文件不会上传到GIT
 
 ```
 
@@ -75,6 +75,7 @@ yarn run test:e2e
 ### 模拟数据
 ```
 先找一个你想存数据的地方, 我的: E:\project\nodejs\jsonserver
+数据文件位于: doc/db.json
 打开CMD或powershell
 npm init -y 初始化项目
 npm install json-server
@@ -83,20 +84,3 @@ npm install json-server
 npm start 启动就可以了, 看控制台, 复制一个URL试试, 支持增删改查
 
 ```
-
-### 命名规范
-```
-视图一个视图都建立在包中
-接口命名, 新增add, 修改, 删除, 查询, 查询列表, 查询单个, 批量删除, 批量
-
-
-v-has 指令在webstorm中报错解决
-settins > Editros > Inspections > HTML > Unknown Html Tag 增加v-has即可
-
-```
-
-### 问题
-1.非预定的配置, 目前还不知道能不能读取到, 如test, preprod
-2.cookie/storage/session/dbindex/mixin 使用插件
-3.css未分离出来
-4.后台需要根据token判断用户是否拥有某个权限(页面权限, 按钮级权限);

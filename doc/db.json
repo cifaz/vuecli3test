@@ -1,0 +1,59 @@
+{
+  "menuList": [
+    {
+      "path": "/",
+      "name": "home",
+      "meta": ["cliList","ab-cd"],
+      "component": "home/Home"
+    },
+    {
+      "path": "/about",
+      "name": "about",
+      "meta": ["addNews2", "modNews", "delNews"],
+      "component": "about/About"
+    }
+  ]
+  ,
+  "news": [
+    {
+      "id": 1,
+      "title": "新闻1",
+      "readCount": 343
+    },
+    {
+      "id": 2,
+      "title": "新闻2",
+      "readCount": 333
+    },
+    {
+      "title": "修改过后的新闻XX22222222222",
+      "readCount": 33,
+      "id": 3
+    },
+    {
+      "title": "修改过后的新闻XX22222222222",
+      "readCount": 44,
+      "id": 4
+    },
+    {
+      "id": 9,
+      "title": "我是新的新闻999",
+      "readCount": 99
+    },
+    {
+      "title": "我是新的新闻",
+      "readCount": 2355434,
+      "id": 10
+    },
+    {
+      "title": "我是VUE新闻",
+      "readCount": 34324,
+      "id": 12
+    },
+    {
+      "title": "修改过后的新闻XX22222222222",
+      "readCount": 33,
+      "id": 13
+    }
+  ]
+}
