@@ -1,15 +1,20 @@
 import axios from "axios";
 import env from "./env";
+import global from "./global.js";
 
 const baseUrl = env.VUE_APP_API_BASE_URL;
 const applicationJson = "application/json;charset=utf-8";
+import store from "localforage";
 
-axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = "http://localhost:8500/";
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+axios.defaults.headers.get['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 axios.defaults.timeout = 5000;
 
 axios.interceptors.request.use(
     config => {
+        config.headers.authorization = global.token;
+        config.headers.appId = "19990909";
         return config;
     },
     err => {
@@ -46,11 +51,15 @@ export default {
     get: (url, params) => axios.get(url, params),
 
     // 新增
-    post: (url, params) => axios.post(url, params),
+    post: (url, params) => axios.post(url, {headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+        }}),
 
     // 修改
     put: (url, params) => axios.put(url, params),
 
     // 删除
     delete: (url, params) => axios.delete(url, params),
+
+    token: null,
 };

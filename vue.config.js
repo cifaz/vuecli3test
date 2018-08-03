@@ -5,7 +5,7 @@ module.exports = {
         extract: true,
         // 开启 CSS source maps
         sourceMap: false,
-        modules: true,
+        modules: false,
         // css预设器配置项
         loaderOptions: {
             css: {

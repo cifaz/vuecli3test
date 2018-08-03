@@ -1,3 +1,5 @@
+import api from "../../api/"
+
 export default {
     name: "about",
     data() {
@@ -6,6 +8,9 @@ export default {
             url: process.env.VUE_APP_API_BASE_URL || 'no data',
             apiUrl: process.env.VUE_APP_API_BASE_URL || 'no data',
         }
+    },
+    mounted() {
+        api.user.getUserOne(2);
     },
     methods: {
         getEnv: function () {

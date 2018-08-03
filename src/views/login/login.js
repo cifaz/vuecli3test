@@ -29,38 +29,29 @@ export default {
     },
     methods: {
         login: function () {
-            if (this.username === "admin" && this.passwd === "admin") {
-                console.log("登陆成功!");
-                store.setItem("token", "234324234").then((data) => {
-
-                    api.menu.getList().then((data) => {
-                        let stringify = JSON.stringify(data);
-                        // let routerArr = data;
-                        //
-                        // for (let i = 0; i < routerArr.length; i++) {
-                        //     let routerArrElement = routerArr[i];
-                        //     if (routerArrElement.component) {
-                        //         let path = routerArrElement.component;
-                        //         routerArr[i].component = () => import(`@/views/${path}.vue`);
-                        //     }
-                        // }
-
-                        // const Home = resovle => (require("@/views/home/Home.vue"), resovle);
-                        // const Home2 = () => (import("@/views/home/Home.vue"));
+            api.user.login(this.userName, this.passwd).then((data) => {
+                console.log("登陆成功! ===== ");
+                console.log(data);
+                if (data.success) {
+                    let dataObj = data.data;
+                    let jwt = dataObj.jwt;
+                    store.setItem("token", jwt).then(() => {
+                        let menuList = dataObj.menuList;
+                        let stringify = JSON.stringify(menuList);
 
                         let _this = this;
                         store.setItem("routers", stringify).then((data) => {
-                            util.addRouters(data, function () {
+                            util.addRouters(menuList, function () {
                                 _this.$router.push({name: "about"});
                             });
-
                         });
-                    });
-
-                })
-            } else {
-                console.log("登陆失败!");
-            }
+                    })
+                } else {
+                    console.log("登陆失败!");
+                }
+            }).catch((err) => {
+                console.log("------------");
+            });
         }
     }
 }
